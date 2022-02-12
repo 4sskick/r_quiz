@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import QuestionCard from './components/QuestionCards';
+import { fetchQuestionAsync, Difficulty } from './API';
+
 
 const TOTAL_QUESTION = 10;
 
@@ -11,6 +13,8 @@ const App = () => {
   const [userAnswers, setUserAnswers] = useState([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
+
+  console.log(fetchQuestionAsync(TOTAL_QUESTION, Difficulty.EASY));
 
   const beginQuiz = async () => {
 
@@ -33,14 +37,14 @@ const App = () => {
         <p className="score">Score:</p>
         <p>Loading Question...</p>
 
-        <QuestionCard
+        {/* <QuestionCard
           question={questions[questionNumber].question}
           answers={questions[questionNumber].answer}
           userAnswer={userAnswers ? userAnswers[questionNumber] : undefined}
           questionNumber={questionNumber + 1}
           questionTotal={TOTAL_QUESTION}
           mCallback={checkAnswer}
-        />
+        /> */}
 
         <button className="next" onClick={nextQuestion}>
           Next Question
